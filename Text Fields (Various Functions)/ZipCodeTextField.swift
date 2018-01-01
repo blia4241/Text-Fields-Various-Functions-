@@ -12,5 +12,21 @@ import UIKit
 // MARK: - ZipCodeTextFieldDelegate: NSObject, UITextFieldDelegate 
 class ZipCodeTextFieldDelegate: NSObject, UITextFieldDelegate {
     
-    // M
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        textField.keyboardType = UIKeyboardType.numberPad
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let aSet = CharacterSet(charactersIn: "0123456789").inverted
+        let compSepByCharInSet = string.components(separatedBy: aSet)
+        let numberFiltered = compSepByCharInSet.joined(separator: "")
+        
+        if (textField.text?.characters.count)! <= 5 {
+            return string == numberFiltered
+        } else {
+            return false
+        }
+    }
 }
