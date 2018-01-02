@@ -23,7 +23,7 @@ class ZipCodeTextFieldDelegate: NSObject, UITextFieldDelegate {
         let compSepByCharInSet = string.components(separatedBy: aSet)
         let numberFiltered = compSepByCharInSet.joined(separator: "")
         
-        if (textField.text?.characters.count)! <= 5 {
+        if (textField.text?.characters.count)! <= 4 {
             return string == numberFiltered
         } else if string == "" {
             return true
