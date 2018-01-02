@@ -25,6 +25,8 @@ class ZipCodeTextFieldDelegate: NSObject, UITextFieldDelegate {
         
         if (textField.text?.characters.count)! <= 5 {
             return string == numberFiltered
+        } else if string == "" {
+            return true
         } else {
             return false
         }
